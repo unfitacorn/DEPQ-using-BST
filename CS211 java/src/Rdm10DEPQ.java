@@ -4,6 +4,8 @@ public class Rdm10DEPQ implements DEPQ {
 	int size;
 	Node current;
 	Node tempParent;
+	Node tempNode;
+	
 
 	public Rdm10DEPQ() {
 		Node root = null;
@@ -50,7 +52,7 @@ public class Rdm10DEPQ implements DEPQ {
 				tempParent = current;
 				
 
-					if (c.compareTo(current.getData()) <= 0) {
+					if (c.compareTo(current.getData()) < 0) {
 
 						current = current.left;
 					
@@ -71,6 +73,9 @@ public class Rdm10DEPQ implements DEPQ {
 							set = true;
 					}
 
+				} else if (c.compareTo(current.getData()) == 0){
+					current.nodeSize = current.nodeSize + 1;
+					set = true;
 				}
 			} while (!set);
 		}
@@ -80,14 +85,85 @@ public class Rdm10DEPQ implements DEPQ {
 	
 	public Comparable getLeast() {
 		size--;
+		Comparable tempData = 0;
+
+		current = root;
 		
-		return null;
+		
+		
+		while(!(current.left == null)){
+			current = current.left;
+		}
+		
+		
+		if (current.nodeSize > 1){
+			current.nodeSize--;
+			tempData = current.data;
+		}else if(current == root){
+			
+			tempData = root.data;
+			root = root.getRight();
+			
+		}else if (current.right == null){
+			tempData = current.getData();
+			current.getParent().setLeft(null);
+			
+		} else if (current.right != null) {
+			
+			tempData = current.data;
+			tempNode = current;
+			current = current.getParent();
+			current.setLeft(tempNode.getRight());
+			current = tempNode.getRight();
+			current.setParent(tempNode.getParent());
+			
+			
+//			current.getParent().setLeft(current.right);
+//			current.getRight().setParent(current.getParent());
+//			current = null;
+			
+		}
+		
+		
+		return tempData;
 	}
 
 	public Comparable getMost() {
 		size--;
+		Comparable tempData = 0;
 
-		return null;
+		current = root;
+		
+		
+		
+		while(!(current.right == null)){
+			current = current.right;
+		}
+		
+		
+		if (current.nodeSize > 1){
+			current.nodeSize--;
+			tempData = current.data;
+		}else if(current == root){
+			
+			tempData = root.data;
+			root = root.getLeft();
+			
+		}else if (current.left == null){
+			tempData = current.getData();
+			current.getParent().setRight(null);
+			
+		} else if (current.left != null) {
+			
+			tempData = current.data;
+			tempNode = current;
+			current = current.getParent();
+			current.setRight(tempNode.getLeft());
+			current = tempNode.getLeft();
+			current.setParent(tempNode.getParent());
+			
+		}
+		return tempData;
 	}
 
 	public boolean isEmpty() {
@@ -109,12 +185,23 @@ public class Rdm10DEPQ implements DEPQ {
 		private Node parent;
 		private Node left;
 		private Node right;
+		private int nodeSize;
 
 		public Node(Comparable data) {
 			this.data = data;
 			parent = null;
 			left = null;
 			right = null;
+			nodeSize = 1;
+			
+		}
+
+		public int getSize() {
+			return nodeSize;
+		}
+
+		public void setSize(int nodeSize) {
+			this.nodeSize = nodeSize;
 		}
 
 		public Comparable getData() {
