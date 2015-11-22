@@ -11,6 +11,10 @@
  * DEPQ'.
  * </p>
  * 
+ * <p>
+ * I decided to use HTML for some of the javadoc as it would be easier to
+ * format.
+ * </p>
  * 
  * <p>
  * The Resources I used:
@@ -19,23 +23,84 @@
  * class</li>
  * <li>The DEPQTest.java created by Bernie Tinderman which was a JUnit class to
  * test the DEPQ</li>
- * <li>Used to help create the add function - <a href=
+ * <li>Used to help create the add function [1] - <a href=
  * "http://algorithms.tutorialhorizon.com/binary-search-tree-complete-implementation/"
  * > Click here to view site </a></li>
  * </ul>
- * 
+ * </p>
  * 
  * <p>
  * <b>References:</b>
+ * </p>
  * <p>
- * -SJ. (2015, November 18). Binary Search Tree Complete Implementation.
+ * [1] -SJ. (2015, November 18). Binary Search Tree Complete Implementation.
  * Retrieved from tutorialhorizon:
  * http://algorithms.tutorialhorizon.com/binary-search
  * -tree-complete-implementation/
  * 
+ * </p>
+ * 
+ * <p>
+ * <b>Complexity Analysis:</b>
+ * </p>
+ * <p>
+ * 
+ * 
+ * <b>Inspect Least and Most Methods</b>
+ * <p>
+ * Within the inspect methods, the algorithm just looks through the binary
+ * search tree until the correct element is found. As it is not balanced this
+ * means that the best case for the searching of an element is O(log n). Again,
+ * because this is not balanced, this means that the worst case would be O(n) as
+ * all elements could be to the right/left of each other.
+ * </p>
+ * 
+ * 
+ * <b>Add Method</b>
+ * <p>
+ * The add method is very simple. It simple loops through going left or right
+ * (if the root has been set) until it finds a null node. This means that the
+ * best case would be if each node had the same amount of children as the other
+ * nodes on that level. The worst case being if all the children are going
+ * left/right. This means that the best case would be O(log n) and the worst
+ * case would be O(n).
+ * </p>
+ * 
+ * 
+ * <b>Get Least and Most Methods</b>
+ * <p>
+ * The get methods are also very simple. It loops through the binary search tree
+ * looking for the smallest or the greatest element in the data structure. If
+ * there if the element has no children it will remove it. If not it will remove
+ * the element and then bubble up the children. This means the worst case would
+ * be if all the children were on one side of the parent and no node had two
+ * children, essentially a linked list, this would make it O(n). If the binary
+ * search tree was sorted with the least "height"/"levels" then this would be
+ * the best case, and then the element has no children so it doesn't need to
+ * bubble up, this would make the complexity O(log n).
  * 
  * </p>
  * 
+ * 
+ * <b>Is Empty Method</b>
+ * <p>
+ *  
+ * </p>
+ *
+ * 
+ * </p>
+ * 
+ * <b>Self assessment:</b>
+ * <p>
+ * Overall I think I am very happy with the code I have produced and the
+ * efficiency for the solution of the problem. I was very happy I have been able
+ * to implement a binary search tree, as I thought it would be too difficult for
+ * me with my knowledge of java. Once I set up the node class I found it very
+ * easy to implement.
+ * 
+ * 
+ * </p>
+ *
  * @author Robert Mouncer - rdm10
  * @version 1.0
  * 
@@ -47,11 +112,11 @@ public class Rdm10DEPQ implements DEPQ {
 	 * 
 	 * @param root
 	 *            is used to store the variables of the very top node of the
-	 *            Binary Tree. This is so I can set the current node to root and
-	 *            easily start at the top of the tree.
+	 *            binary search tree. This is so I can set the current node to
+	 *            root and easily start at the top of the tree.
 	 * @param size
-	 *            is used to keep track of the size of the Binary Tree. It is
-	 *            changed when a node is added or removed.
+	 *            is used to keep track of the size of the binary search tree.
+	 *            It is changed when a node is added or removed.
 	 * @param current
 	 *            is used to cycle through all the nodes until the correct one
 	 *            is found.
@@ -210,6 +275,7 @@ public class Rdm10DEPQ implements DEPQ {
 		// 4.if the nodeSize is greater than 1 then then the node doesn't need
 		// to be deleted but the nodeSize just needs to be decreased.
 		if (current.getNodeSize() > 1) {
+
 			current.nodeSize--;
 			tempData = current.getData();
 			// 5. if the node is the root then the root needs to go to the next
@@ -299,7 +365,8 @@ public class Rdm10DEPQ implements DEPQ {
 	}
 
 	/**
-	 * Checks if the DEPQ is empty. 
+	 * Checks if the DEPQ is empty.
+	 * 
 	 * @return (size==0) - returns true or false.
 	 */
 	public boolean isEmpty() {
@@ -309,10 +376,11 @@ public class Rdm10DEPQ implements DEPQ {
 
 	/**
 	 * returns the size of the DEPQ
+	 * 
 	 * @return size - is the size of the DEPQ.
 	 */
 	public int size() {
-		// return the size of the binary tree.
+		// return the size of the binary search tree.
 		return size;
 	}
 
@@ -320,15 +388,25 @@ public class Rdm10DEPQ implements DEPQ {
 	// METHODS____________________________________________
 	// Inner object class to be used for nodes within the BST.
 	/**
-	 * @author Robert
+	 * 
+	 * This is the inner class I used for the creation of the object Node. I
+	 * created it once I realised how I needed to use the nodes in the binary
+	 * search tree to store and retrieve data. </p>
+	 * 
+	 * @author Robert Mouncer - rdm10
 	 * @version 1.0
+	 * 
+	 *
+	 */
+	/**
+	 * @author Robert
 	 *
 	 */
 	private class Node implements Comparable<Node> {
 		// instance variables for the Node class
 		// data - data within the node
 		// parent - parent node to easily navigate
-		// left or right - child nodes
+		// left or right - child node
 		// nodeSize - store the amount of times the data has been entered
 		private Comparable data;
 		private Node parent;
@@ -337,6 +415,16 @@ public class Rdm10DEPQ implements DEPQ {
 		private int nodeSize;
 
 		// variables used for the node object.
+		/**
+		 * This is the constructor for how nodes are created. The only variable
+		 * needed is the data, as when new nodes are created, the they will be
+		 * at the bottom of the tree so the left/right children just need to be
+		 * null.
+		 * 
+		 * @param data
+		 *            the element stored within the node. This decides where the
+		 *            element is stored on the tree too.
+		 */
 		public Node(Comparable data) {
 			this.data = data;
 			parent = null;
@@ -346,44 +434,106 @@ public class Rdm10DEPQ implements DEPQ {
 		}
 
 		// ___________BELOW IS GETTERS AND SETTERS FOR NODE CLASS______
+		/**
+		 * A method to return the node size
+		 * 
+		 * @return The size of the node specified.
+		 */
 		public int getNodeSize() {
 			return nodeSize;
 		}
 
+		/**
+		 * A method that sets the size of the node within the binary search
+		 * tree.
+		 * 
+		 * @param nodeSize
+		 *            the size of the node specified.
+		 */
 		public void setNodeSize(int nodeSize) {
 			this.nodeSize = nodeSize;
 		}
 
+		/**
+		 * A method that returns the element of the node.
+		 * 
+		 * @return The element of the node.
+		 */
 		public Comparable getData() {
 			return data;
 		}
 
+		/**
+		 * A method that returns the parent node.
+		 * 
+		 * @return The parent node of the current node.
+		 */
 		public Node getParent() {
 			return parent;
 		}
 
+		/**
+		 * A method that sets the parent node of the node.
+		 * 
+		 * @param parent
+		 *            of the node.
+		 */
 		public void setParent(Node parent) {
 			this.parent = parent;
 		}
 
+		/**
+		 * A method that will return the left child of the current node.
+		 * 
+		 * @return The left child of the node.
+		 */
 		public Node getLeft() {
 			return left;
 		}
 
+		/**
+		 * A method that sets the left child of the node.
+		 * 
+		 * @param left
+		 *            is the left child of the node.
+		 */
 		public void setLeft(Node left) {
 			this.left = left;
 		}
 
+		/**
+		 * A method that will return the right child of the current node.
+		 * 
+		 * @return The right child of the node.
+		 */
 		public Node getRight() {
 			return right;
 		}
 
+		/**
+		 * A method that sets the left child of the node.
+		 * 
+		 * @param right
+		 *            is the right child of the node.
+		 */
 		public void setRight(Node right) {
 			this.right = right;
 		}
 
+		/**
+		 * @param o
+		 *            is the comparable that is being used to compare two
+		 *            variables.
+		 * @return <ul>
+		 *         <li>-1 - less than</li>
+		 *         <li>0 - equal to</li>
+		 *         <li>1 - greater than</li>
+		 *         </ul>
+		 */
 		public int compareTo(Node o) {
 			return 0;
 		}
+
 	}
+
 }
