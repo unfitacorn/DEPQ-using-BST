@@ -1,14 +1,30 @@
 /**
  * <p>
- * Created for assignment CS21120. I decided I would implement a binary search
- * tree as I thought it would be easy enough to implement and how I would
- * implement it.
+ * This is a Double ended priority queue created for my CS21120 assignment. I
+ * implemented it using a binary search tree as the data structure to store all
+ * the elements within the DEPQ. There were multiple data structures that I
+ * could have used but I decided that I would create a DEPQ using a BST as I
+ * thought it would be easy enough to implement. I was unsure to start with how
+ * to created the binary search tree, I thought it would have to be stored
+ * within an array, but then I realised I could create it as an object that
+ * refers to itself for the parent and child nodes.
  * </p>
  * 
  * <p>
  * Firstly I implemented the class Rdm10DEPQ as it would need to use the methods
  * that were created in the DEPQ interface. This is why I have used 'implements
- * DEPQ'.
+ * DEPQ'. I created the very simple methods first such as "isEmpty()" and
+ * "size()" as I knew how these would work and what they would need to return. I
+ * then created the node class but I didn't include the nodeSize as I thought
+ * this would just pass to the left. But then I found out that it needs to be
+ * stored within the node, so I created nodeSize. I then went onto creating the
+ * add method, this is where I had most problem because I couldn't get the
+ * format of the if and while statements correct, so I looked at the website in
+ * the references for help [1]. Once this was done I created the inspect methods
+ * and they were easy to create, and are just inverses of each other. This goes
+ * the same for the get methods, I used the start of the inspect methods and
+ * wrote down pseudo code, and created it. The only thing that I missed out
+ * first time was the if the root was the smallest/largest elemenet.
  * </p>
  * 
  * <p>
@@ -19,18 +35,22 @@
  * <p>
  * The Resources I used:
  * <ul>
- * <li>The DEPQ.java created by Bernie Tinderman.Which is the interface for this
+ * <li>The DEPQ.java created by Bernie Tidderman.Which is the interface for this
  * class</li>
- * <li>The DEPQTest.java created by Bernie Tinderman which was a JUnit class to
+ * <li>The DEPQTest.java created by Bernie Tidderman which was a JUnit class to
  * test the DEPQ</li>
- * <li>Used to help create the add function [1] - <a href=
+ * <li>The DEPQStringTest.java created by Bernie Tidderman to test the
+ * comparable type being passed through methods.</li>
+ * <li>Used to help create the add function, I only needed it for the
+ * "if (current == null)" part of the method as I was unsure at the time when I
+ * created it. [1] - <a href=
  * "http://algorithms.tutorialhorizon.com/binary-search-tree-complete-implementation/"
  * > Click here to view site </a></li>
  * </ul>
  * </p>
  * 
  * <p>
- * <b>References:</b>
+ * <u><b>References:</b></u>
  * </p>
  * <p>
  * [1] -SJ. (2015, November 18). Binary Search Tree Complete Implementation.
@@ -41,7 +61,7 @@
  * </p>
  * 
  * <p>
- * <b>Complexity Analysis:</b>
+ * <u><b>Complexity Analysis:</b></u>
  * </p>
  * <p>
  * 
@@ -84,23 +104,87 @@
  * 
  * <b>Is Empty Method</b>
  * <p>
- *  
- * </p>
- *
- * 
+ * As this is just a return statement of a global variable, I believe the time
+ * complexity would be O(1).
  * </p>
  * 
- * <b>Self assessment:</b>
+ * 
+ * <b>Size Method</b>
  * <p>
- * Overall I think I am very happy with the code I have produced and the
- * efficiency for the solution of the problem. I was very happy I have been able
- * to implement a binary search tree, as I thought it would be too difficult for
- * me with my knowledge of java. Once I set up the node class I found it very
- * easy to implement.
- * 
- * 
+ * As this is just a return statement of a global variable, I believe the time
+ * complexity would be O(1).
  * </p>
  *
+ *
+ * <b>All getter and setter methods within Node Class</b>
+ * <p>
+ * As they are just return statements of the variables within nodes, I believe
+ * the time complexity would be O(1).
+ * </p>
+ * 
+ * <p>
+ * Overall the average efficiency seems to be O(log n) but the worst case seems
+ * to be O(n). If I used a different data structure such a sorted array then the
+ * average case would be O(n). Another data structure that I could have used
+ * would have been a interval heap but that would have had the same complexity
+ * as implementing a binary search tree as I have.
+ * </p>
+ * 
+ * </p>
+ * 
+ * <p>
+ * <u><b>Self Evaluation:</b></u>
+ * </p>
+ * 
+ * 
+ * 
+ * <p>
+ * With the marking of the "correct functioning of each method" I think I have
+ * achieved at least 20% of the 25% achievable, my code is all working perfectly
+ * and passes the tests with no problem. The only down side is that when a root
+ * is removed the new root is still linked to the old root but it is ignored
+ * from then on.
+ * </p>
+ * 
+ * <p>
+ * With marking the "Overall efficiency" I think I have also achieved a good
+ * mark, with the average case of most methods being O(log n), this is what was
+ * expected from the assignment specification. I think I would give myself 18%
+ * of the 25% available.
+ * </p>
+ * 
+ * <p>
+ * I think I have given a clear description of my algorithms for my
+ * "Documentation based report". I feel that there is plenty of javadoc for each
+ * method, there is little javadoc for the smaller methods as there is not much
+ * to document about them. For my "Documentation based report" I think I would
+ * give myself 20% of the 25% available.
+ * </p>
+ * 
+ * <p>
+ * "Complexity Analysis" is definitely not my strongest subject, but I feel
+ * after going over Bernie Tidderman and Thomas Jansen slides I feel a lot more
+ * comfortable working it out. I have provided the best and worst case for all
+ * the methods and I am certain they are right. I have completed the tasks
+ * provided in the specification so I would award myself at least 17% of the 20%
+ * available.
+ * </p>
+ * 
+ * 
+ * <p>
+ * My "Self Evaluation" is covers all points necessary as shown in the marking
+ * grid of the specification. I would give myself the full 5% available for this
+ * section.
+ * </p>
+ * 
+ * <p>
+ * Overall I would give myself between 75% and 80%. I think I am very happy with
+ * the code I have produced and the efficiency for the solution of the problem.
+ * I was very happy I have been able to implement a binary search tree, as I
+ * thought it would be too difficult for me with my knowledge of java. Once I
+ * set up the node class I found it very easy to implement.
+ * </p>
+ * 
  * @author Robert Mouncer - rdm10
  * @version 1.0
  * 
@@ -146,7 +230,10 @@ public class Rdm10DEPQ implements DEPQ {
 
 	/**
 	 * This method will return the smallest element within the DEPQ but will not
-	 * remove it from the DEPQ.
+	 * remove it from the DEPQ. It will firstly set the current to root. Then
+	 * loop through the nodes constantly going left as this is where the lowest
+	 * element will be. Once it can't go any further to the left it will return
+	 * the element that was in that position.
 	 *
 	 * @return current.getData() - the element of current. Which will be the
 	 *         smallest in the DEPQ.
@@ -165,7 +252,10 @@ public class Rdm10DEPQ implements DEPQ {
 
 	/**
 	 * This method will return the largest element within the DEPQ but will not
-	 * remove it from the DEPQ.
+	 * remove it from the DEPQ. It will firstly set the current to root. Then
+	 * loop through the nodes constantly going right as this is where the
+	 * largest element will be. Once it can't go any further to the right it
+	 * will return the element that was in that position.
 	 * 
 	 * @return current.getData() - the element of current. Which will be the
 	 *         largest in the DEPQ.
@@ -188,9 +278,9 @@ public class Rdm10DEPQ implements DEPQ {
 	 * is a root node present. If there isn't a root node will be created, but
 	 * if there is then it will continue to go to the left or right child until
 	 * a null node is found. Then it will create that as a new node. I used the
-	 * website in the references to help me work out the algorithm needed. The
-	 * only help I needed for it was for part 5a and 6a (as seen in the
-	 * comments)
+	 * website in the references to help me work out the algorithm needed for
+	 * the small parts being "if (current == null)". The only help I needed for
+	 * it was for part 5a and 6a (as seen in the comments)
 	 * 
 	 * @param c
 	 *            is used to pass the element into the method. It is then added
@@ -253,7 +343,15 @@ public class Rdm10DEPQ implements DEPQ {
 	}
 
 	/**
-	 * Removes the smallest element from the DEPQ.
+	 * Removes the smallest element from the DEPQ and returns the value from the
+	 * node. This is done by using the same functions as the inspect methods for
+	 * the first part, it will go all the way left. Once it has found the
+	 * smallest element it will remove it. If that node has no children then it
+	 * will do nothing else other than return the element that was in the node
+	 * deleted. But if the node has children that are larger than the smallest
+	 * node then it will bubble these up. If the root node is the smallest node
+	 * then it will delete the root and save the next largest child node as the
+	 * root.
 	 * 
 	 * @return tempData this is a comparable that the data is stored in. This is
 	 *         used as the node may need to be removed.
@@ -310,7 +408,15 @@ public class Rdm10DEPQ implements DEPQ {
 	}
 
 	/**
-	 * Removes the largest element from the DEPQ.
+	 * Removes the largest element from the DEPQ and returns the value from the
+	 * node. This is done by using the same functions as the inspect methods for
+	 * the first part, it will go all the way right. Once it has found the
+	 * largest element it will remove it. If that node has no children then it
+	 * will do nothing else other than return the element that was in the node
+	 * deleted. But if the node has children that are smaller than the largest
+	 * node then it will bubble these up. If the root node is the largest node
+	 * then it will delete the root and save the next smallest child node as the
+	 * root.
 	 * 
 	 * @return tempData this is a comparable that the data is stored in. This is
 	 *         used as the node may need to be removed.
@@ -365,7 +471,8 @@ public class Rdm10DEPQ implements DEPQ {
 	}
 
 	/**
-	 * Checks if the DEPQ is empty.
+	 * Checks if the DEPQ is empty. If it is empty it will return true,
+	 * otherwise it will return false. This is done using the size variable.
 	 * 
 	 * @return (size==0) - returns true or false.
 	 */
@@ -375,7 +482,8 @@ public class Rdm10DEPQ implements DEPQ {
 	}
 
 	/**
-	 * returns the size of the DEPQ
+	 * returns the size of the DEPQ. Size is the variable that holds the amount
+	 * of elements within the DEPQ.
 	 * 
 	 * @return size - is the size of the DEPQ.
 	 */
